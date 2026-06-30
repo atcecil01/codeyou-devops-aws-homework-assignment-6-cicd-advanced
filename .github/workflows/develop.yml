@@ -22,7 +22,9 @@ jobs:
         run: bundle exec rubocop
 
       - name: Vulnerability Scan
-        run: bundler-audit check --update && bundler-audit check
+        run: |
+          gem install bundler-audit
+          bundler-audit --update && bundler-audit check
 
       - name: Unit Tests
         run: bundle exec rspec
